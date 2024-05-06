@@ -5,6 +5,10 @@ export default function Card({ data }) {
     return (s && s[0].toUpperCase() + s.slice(1)) || "";
   };
 
+  const handleClick = (link) =>{
+    window.open(link, "_blank");
+  }
+
   return (
     <div className="job-card">
       <div className="card-nav">
@@ -37,7 +41,7 @@ export default function Card({ data }) {
         )}
       </div>
       <div className="btn-cont">
-        <button type="button" className="btn-green">
+        <button type="button" className="btn-green" onClick={()=>handleClick(data.jdLink)}>
           Easy Apply
         </button>
         <button type="button" className="btn-blue">

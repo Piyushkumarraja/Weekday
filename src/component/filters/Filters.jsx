@@ -1,76 +1,77 @@
 import Select from "react-select";
 import "./_filters.scss";
+import {
+  rolesOptions,
+  workModeOptions,
+  experienceOptions,
+  basePayOptions,
+} from "../data";
 
-const Filter = () => {
-  const colourOptions = [
-    { value: "ocean", label: "Ocean", color: "#00B8D9", isFixed: true },
-    { value: "blue", label: "Blue", color: "#0052CC", isDisabled: true },
-    { value: "purple", label: "Purple", color: "#5243AA" },
-    { value: "red", label: "Red", color: "#FF5630", isFixed: true },
-    { value: "orange", label: "Orange", color: "#FF8B00" },
-    { value: "yellow", label: "Yellow", color: "#FFC400" },
-    { value: "green", label: "Green", color: "#36B37E" },
-    { value: "forest", label: "Forest", color: "#00875A" },
-    { value: "slate", label: "Slate", color: "#253858" },
-    { value: "silver", label: "Silver", color: "#666666" },
-  ];
+const Filter = ({filter, onChange}) => {
+
+  const style = {
+    menu: (base) => ({
+      ...base,
+      width: "max-content",
+      minWidth: "100%",
+    }),
+  };
+
   return (
     <div className="filter-cont">
       <div className="filter-item">
-        <div className="filter-heading">Filters</div>
+        <div className="filter-heading">Roles</div>
         <Select
-          defaultValue={[colourOptions[2], colourOptions[3]]}
           isMulti
-          name="colors"
-          options={colourOptions}
+          name="roles"
+          options={rolesOptions}
           className="basic-multi-select"
           classNamePrefix="select"
+          placeholder="Roles"
+          styles={style}
+          onChange={(e) => onChange(e, "roles")}
         />
       </div>
       <div className="filter-item">
-        <div className="filter-heading">Filters</div>
+        <div className="filter-heading">Experience</div>
         <Select
-          defaultValue={[colourOptions[2], colourOptions[3]]}
           isMulti
-          name="colors"
-          options={colourOptions}
+          name="experience"
+          options={experienceOptions}
           className="basic-multi-select"
           classNamePrefix="select"
+          placeholder="Experience"
+          styles={style}
+          onChange={(e) => onChange(e, "exp")}
         />
       </div>
       <div className="filter-item">
-        <div className="filter-heading">Filters</div>
+        <div className="filter-heading">Work Mode</div>
         <Select
-          defaultValue={[colourOptions[2], colourOptions[3]]}
           isMulti
-          name="colors"
-          options={colourOptions}
+          name="work_mode"
+          options={workModeOptions}
           className="basic-multi-select"
           classNamePrefix="select"
+          placeholder="Work Mode"
+          styles={style}
+          onChange={(e) => onChange(e, "workMode")}
         />
       </div>
       <div className="filter-item">
-        <div className="filter-heading">Filters</div>
+        <div className="filter-heading">Min Base Pay</div>
         <Select
-          defaultValue={[colourOptions[2], colourOptions[3]]}
           isMulti
-          name="colors"
-          options={colourOptions}
+          name="pay"
+          options={basePayOptions}
           className="basic-multi-select"
           classNamePrefix="select"
+          placeholder="Min Base Pay"
+          styles={style}
+          onChange={(e) => onChange(e, "basePay")}
         />
       </div>
-      <div className="filter-item">
-        <div className="filter-heading">Filters</div>
-        <Select
-          defaultValue={[colourOptions[2], colourOptions[3]]}
-          isMulti
-          name="colors"
-          options={colourOptions}
-          className="basic-multi-select"
-          classNamePrefix="select"
-        />
-      </div>
+      <input type="text" onChange={(e) => onChange(e.target.value, "title")} className="input-box" placeholder="Company Name"/>
     </div>
   );
 };

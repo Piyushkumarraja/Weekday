@@ -1,5 +1,6 @@
 .App {
   padding: 30px;
+  padding-top: 15px;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -7,4 +8,5 @@
   gap: 10px;
   width: 100%;
   box-sizing: border-box;
+  padding-right: 10%;
 }
