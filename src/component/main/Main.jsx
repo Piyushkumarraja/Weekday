@@ -101,6 +101,8 @@ export default function Main({ filter }) {
       setPage(page + 1);
     } catch (error) {
       setError(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -110,6 +112,19 @@ export default function Main({ filter }) {
 
   return (
     <div className="main-cont">
+      {loading && (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "80vh",
+            paddingRight: "10px",
+          }}
+        >
+          <CircularProgress />
+        </Box>
+      )}
       {
         <InfiniteScroll
           dataLength={cardData.length}
